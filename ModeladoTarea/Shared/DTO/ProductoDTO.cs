@@ -1,17 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Blazorapp5.BD.Data.Entity
+namespace ModeladoTarea.Shared.DTO
 {
-    public class Producto
+    public class ProductoDTO
     {
-        [Key]
-        public int Id { get; set; }
 
         [MaxLength(1000, ErrorMessage = "Solo se aceptan hasta 1000 caracteres en la Descripcion")]
         public string? Descripcion { get; set; }
@@ -21,11 +18,10 @@ namespace Blazorapp5.BD.Data.Entity
         public string Nombre { get; set; }
 
         [Required(ErrorMessage = "El Precio es obligatorio")]
-        [Precision(18, 2)]
+        //[Precision(18, 2)]
         public decimal Precio { get; set; }
 
-        public Carrito Carrito { get; set; }
-
         public int CarritoId { get; set; }
+
     }
 }

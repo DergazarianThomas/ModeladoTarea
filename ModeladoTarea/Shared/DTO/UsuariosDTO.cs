@@ -5,13 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Blazorapp5.BD.Data.Entity
+namespace ModeladoTarea.Shared.DTO
 {
-    public class Usuario
+    public class UsuariosDTO
     {
-
-        [Key]
-        public int Id { get; set; }
 
         [Required(ErrorMessage = "El Nombre de Usuario es obligatorio")]
         [MaxLength(32, ErrorMessage = "Solo se aceptan hasta 32 caracteres en el Usuario")]
@@ -45,10 +42,9 @@ namespace Blazorapp5.BD.Data.Entity
 
         public string Apellido { get; set; }
 
-
-        public Rol Rol { get; set; }
-
+        [Required(ErrorMessage = "El Rol es obligatorio")]
         public int RolId { get; set; }
+
 
     }
 }

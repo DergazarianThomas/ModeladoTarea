@@ -11,6 +11,11 @@ namespace Blazorapp5.BD.Data
 {
     public class Context : DbContext
     {
+        public Context(DbContextOptions options) : base(options)
+        {
+
+        }
+
         public DbSet<Rol> Roles => Set<Rol>();
 
         public DbSet<Usuario> Usuarios => Set<Usuario>();
@@ -19,15 +24,6 @@ namespace Blazorapp5.BD.Data
 
         public DbSet<Producto> Productos => Set<Producto>();
 
-        public DbSet<Compra> Compras => Set<Compra>();
 
-        public DbSet<DatosDePago> DatosDePagos => Set<DatosDePago>();
-
-        public DbSet<ComprabanteDePago> ComprabantesDePagos => Set<ComprabanteDePago>();
-
-        public Context(DbContextOptions options) : base(options) 
-        {
-
-        } 
     }
 }

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Blazorapp5.BD.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230704043700_INICIO")]
-    partial class INICIO
+    [Migration("20230904084938_Inicio")]
+    partial class Inicio
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,69 +42,6 @@ namespace Blazorapp5.BD.Migrations
                     b.ToTable("Carritos");
                 });
 
-            modelBuilder.Entity("Blazorapp5.BD.Data.Entity.Compra", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CarritoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DatosDePagoId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CarritoId");
-
-                    b.HasIndex("DatosDePagoId");
-
-                    b.ToTable("Compras");
-                });
-
-            modelBuilder.Entity("Blazorapp5.BD.Data.Entity.ComprabanteDePago", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CompraId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NumeroComprabante")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CompraId");
-
-                    b.ToTable("ComprabantesDePagos");
-                });
-
-            modelBuilder.Entity("Blazorapp5.BD.Data.Entity.DatosDePago", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("Envio")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("TipoDePago")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("DatosDePagos");
-                });
-
             modelBuilder.Entity("Blazorapp5.BD.Data.Entity.Producto", b =>
                 {
                     b.Property<int>("Id")
@@ -117,17 +54,17 @@ namespace Blazorapp5.BD.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Descripcion")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
-
                     b.Property<decimal>("Precio")
-                        .HasMaxLength(20)
+                        .HasMaxLength(12)
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
@@ -170,23 +107,21 @@ namespace Blazorapp5.BD.Migrations
 
                     b.Property<string>("Contrasena")
                         .IsRequired()
-                        .HasMaxLength(16)
-                        .HasColumnType("nvarchar(16)");
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
 
-                    b.Property<string>("Dni")
-                        .IsRequired()
-                        .HasMaxLength(8)
-                        .HasColumnType("nvarchar(8)");
+                    b.Property<int>("Dni")
+                        .HasColumnType("int");
 
                     b.Property<string>("Domiciliio")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasMaxLength(160)
-                        .HasColumnType("nvarchar(160)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -217,36 +152,6 @@ namespace Blazorapp5.BD.Migrations
                         .IsRequired();
 
                     b.Navigation("Usuario");
-                });
-
-            modelBuilder.Entity("Blazorapp5.BD.Data.Entity.Compra", b =>
-                {
-                    b.HasOne("Blazorapp5.BD.Data.Entity.Carrito", "Carrito")
-                        .WithMany()
-                        .HasForeignKey("CarritoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Blazorapp5.BD.Data.Entity.DatosDePago", "DatosDePago")
-                        .WithMany()
-                        .HasForeignKey("DatosDePagoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Carrito");
-
-                    b.Navigation("DatosDePago");
-                });
-
-            modelBuilder.Entity("Blazorapp5.BD.Data.Entity.ComprabanteDePago", b =>
-                {
-                    b.HasOne("Blazorapp5.BD.Data.Entity.Compra", "Compra")
-                        .WithMany()
-                        .HasForeignKey("CompraId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Compra");
                 });
 
             modelBuilder.Entity("Blazorapp5.BD.Data.Entity.Producto", b =>
