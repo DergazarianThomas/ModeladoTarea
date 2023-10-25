@@ -15,15 +15,8 @@ namespace Blazorapp5.BD.Data
         {
 
         }
-
-        public DbSet<Rol> Roles => Set<Rol>();
-
-        public DbSet<Usuario> Usuarios => Set<Usuario>();
-
-        public DbSet<Carrito> Carritos => Set<Carrito>();
-
         public DbSet<Producto> Productos => Set<Producto>();
-
+        public DbSet<Categoria> Categorias => Set<Categoria>();
 
     }
 }

@@ -22,74 +22,97 @@ namespace ModeladoTarea.Server.Controllers
 
         public async Task<ActionResult<List<Producto>>> Get()
         {
-            var pepe = await context.Productos.ToListAsync();
-            if (pepe == null || pepe.Count == 0)
+            var lista = await context.Productos.ToListAsync();
+            if (lista == null || lista.Count == 0)
             {
                 return BadRequest();
             }
 
-            return pepe;
+            return lista;
         }
 
         [HttpGet("{id:int}")]
 
         public async Task<ActionResult<Producto>> Get(int id)
         {
-            var existe = await context.Productos.AnyAsync(x => x.Id == id);
+            var existe = await context.Productos.AnyAsync(x => x.id == id);
             if (!existe)
             {
                 return NotFound($"el Producto de id={id} no existe");
             }
 
-            return await context.Productos.FirstOrDefaultAsync(x => x.Id == id);
+            return await context.Productos.FirstOrDefaultAsync(x => x.id == id);
         }
 
         [HttpPost]
         public async Task<ActionResult<int>> Post(ProductoDTO entidad)
         {
-            Producto pepe = new Producto();
+            try
+            {
+                var existe = await context.Categorias.AnyAsync(x => x.id == entidad.categoriaId);
+                if (!existe)
+                {
+                    return NotFound($"La categoria de id={entidad.categoriaId} no existe");
+                }
 
-            pepe.Nombre = entidad.Nombre;
-            pepe.Descripcion = entidad.Descripcion;
-            pepe.Precio = entidad.Precio;
-            pepe.CarritoId = entidad.CarritoId;
+                Producto nuevoproducto = new Producto();
+
+                nuevoproducto.codigo = entidad.codigo;
+                nuevoproducto.nombre = entidad.Nombre;
+                nuevoproducto.descripcion = entidad.Descripcion;
+                nuevoproducto.precio = entidad.Precio;
+                nuevoproducto.cantidad = entidad.cantidad;
+                nuevoproducto.categoriaId = entidad.categoriaId;
 
 
-            await context.AddAsync(pepe);
-            await context.SaveChangesAsync();
-            return pepe.Id;
+                await context.AddAsync(nuevoproducto);
+                await context.SaveChangesAsync();
+                return nuevoproducto.id;
+
+
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPut("{id:int}")]
-        public async Task<ActionResult> Put(Producto producto, int id)
+        public async Task<ActionResult> Put(ProductoDTO productoDTO, int id)
         {
-            if (id != producto.Id)
+            //comprobar que ese id exista en la base de datos
+            var exist = await context.Productos.AnyAsync(e => e.id == id);
+            if (!exist)
             {
-                return BadRequest("El Id de el Producto no corresponde");
+                return BadRequest("El Producto no existe");
             }
 
-            var existe = await context.Productos.AnyAsync(x => x.Id == id);
-            if (!existe)
-            {
-                return NotFound($"El Producto de id={id} no existe");
-            }
+            Producto entidad = new Producto();
+            entidad.id = id;
+            entidad.codigo = productoDTO.codigo;
+            entidad.nombre = productoDTO.Nombre;
+            entidad.descripcion = productoDTO.Descripcion;
+            entidad.cantidad = productoDTO.cantidad;
+            entidad.precio = productoDTO.Precio;
+            entidad.categoriaId = productoDTO.categoriaId;
+        
 
-            context.Update(producto);
+            //actualizar
+            context.Update(entidad);
             await context.SaveChangesAsync();
-            return Ok();
+            return Ok("Actualizado con Exito");
         }
 
         [HttpDelete("{id:int}")]
-
         public async Task<ActionResult> Delete(int id)
         {
-            var existe = await context.Productos.AnyAsync(x => x.Id == id);
+            var existe = await context.Productos.AnyAsync(x => x.id == id);
             if (!existe)
             {
-                return NotFound($"el Producto de id={id} no existe");
+                return NotFound($"El producto con el ID={id} no existe");
             }
 
-            context.Remove(new Producto() { Id = id });
+            context.Remove(new Producto() { id = id });
             await context.SaveChangesAsync();
             return Ok();
         }

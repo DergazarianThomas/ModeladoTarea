@@ -11,21 +11,32 @@ namespace Blazorapp5.BD.Data.Entity
     public class Producto
     {
         [Key]
-        public int Id { get; set; }
+        public int id { get; set; }
 
-        [MaxLength(1000, ErrorMessage = "Solo se aceptan hasta 1000 caracteres en la Descripcion")]
-        public string? Descripcion { get; set; }
+        [Required(ErrorMessage = "El CODIGO del PRODUCTO es Obligatorio")]
+        [MaxLength(20, ErrorMessage = "Solo se aceptan hasta 20 caracteres en el CODIGO")]
+        public string codigo { get; set; }
+
+        [Required(ErrorMessage = "El CODIGO del PRODUCTO es Obligatorio")]
+        [MaxLength(20, ErrorMessage = "Solo se aceptan hasta 4 caracteres en el CODIGO")]
+        public int categoria { get; set; }
 
         [Required(ErrorMessage = "El Nombre es obligatorio")]
         [MaxLength(255, ErrorMessage = "Solo se aceptan hasta 255 caracteres en el Nombre")]
-        public string Nombre { get; set; }
+        public string nombre { get; set; }
+
+        [MaxLength(1000, ErrorMessage = "Solo se aceptan hasta 1000 caracteres en la Descripcion")]
+        public string? descripcion { get; set; }
 
         [Required(ErrorMessage = "El Precio es obligatorio")]
         [Precision(18, 2)]
-        public decimal Precio { get; set; }
+        public decimal precio { get; set; }
 
-        public Carrito Carrito { get; set; }
+        [Required(ErrorMessage = "La cantidad es obligatoria")]
+        [Range(1, int.MaxValue, ErrorMessage = "El campo {0} es requerido")]
+        public int cantidad { get; set; }
 
-        public int CarritoId { get; set; }
+        public int categoriaId { get; set; }
+        public Categoria Categorias { get; set; }
     }
 }

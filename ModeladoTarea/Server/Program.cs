@@ -16,7 +16,7 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddDbContext<Context>(opciones => opciones.UseSqlServer("name=conn"));
 
-builder.Services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title ="CargaCarrito", Version = "v1" }));
+builder.Services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title ="CargaProducto", Version = "v1" }));
 
 
 //CONSTRUCCION DE LA APLCIACION
