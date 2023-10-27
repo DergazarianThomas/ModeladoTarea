@@ -49,10 +49,6 @@ namespace Blazorapp5.BD.Migrations
                     b.Property<int>("cantidad")
                         .HasColumnType("int");
 
-                    b.Property<int>("categoria")
-                        .HasMaxLength(20)
-                        .HasColumnType("int");
-
                     b.Property<int>("categoriaId")
                         .HasColumnType("int");
 

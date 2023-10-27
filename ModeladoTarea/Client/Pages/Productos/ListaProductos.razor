@@ -1,0 +1,99 @@
+﻿@page "/productos"
+@inject IHttpServicio http
+
+<PageTitle> Lista de Productos</PageTitle>
+
+<HeadContent>
+
+
+</HeadContent>
+
+
+<body>
+    <h3 class="text-center">ListaProductos</h3>
+
+    <a class="btn btn-primary" href="/productos/agregar">Crear producto</a>
+
+
+    <table>
+        <tr>
+            <th> Codigo </th>
+            <th> Nombre</th>
+            <th> Categoria</th>
+            <th> Descripcion</th>
+            <th> Precio</th>
+            <th> Cantidad</th>
+        </tr>
+        @if(error)
+        {
+            
+        }
+        else
+        {
+            @if (productos == null)
+            {
+                <tr> Cargando....</tr>
+            }
+            else if (productos.Count == 0)
+            {
+                <tr> No existen datos</tr>
+            }
+            else
+            {
+                @foreach (var item in productos)
+                {
+                    <tr>
+                        <td>@item.codigo</td>
+                        <td>@item.nombre</td>
+                        <td>@item.categoriaId</td>
+                        <td>@item.descripcion</td>
+                        <td>@item.precio</td>
+                        <td>@item.cantidad</td>
+                    </tr>
+                }
+            }
+        }
+        
+
+
+    </table>
+
+
+
+
+
+
+
+
+</body>
+
+
+
+@code {
+    List<Producto>? productos;
+    bool error = false;
+    string mensaje = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        await Leer();
+    }
+
+    private async Task Leer()
+    {
+        var respuesta = await http.Get<List<Producto>>("api/Producto");
+
+        error = respuesta.Error;
+
+        if (!respuesta.Error)
+        {
+            productos = respuesta.Respuesta;
+        }
+        else
+        {
+            mensaje = await respuesta.ObtenerError();
+        }
+    }
+
+}

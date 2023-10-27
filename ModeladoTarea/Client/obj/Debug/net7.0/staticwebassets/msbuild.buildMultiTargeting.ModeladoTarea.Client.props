@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\ModeladoTarea.Client.props" />
+</Project>

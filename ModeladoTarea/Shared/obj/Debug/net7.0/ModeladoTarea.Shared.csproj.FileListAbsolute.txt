@@ -1,0 +1,36 @@
+E:\VS22\Repos\ModeladoTarea\ModeladoTarea\Shared\bin\Debug\net7.0\ModeladoTarea.Shared.deps.json
+E:\VS22\Repos\ModeladoTarea\ModeladoTarea\Shared\bin\Debug\net7.0\ModeladoTarea.Shared.dll
+E:\VS22\Repos\ModeladoTarea\ModeladoTarea\Shared\bin\Debug\net7.0\ModeladoTarea.Shared.pdb
+E:\VS22\Repos\ModeladoTarea\ModeladoTarea\Shared\obj\Debug\net7.0\ModeladoTarea.Shared.csproj.AssemblyReference.cache
+E:\VS22\Repos\ModeladoTarea\ModeladoTarea\Shared\obj\Debug\net7.0\ModeladoTarea.Shared.GeneratedMSBuildEditorConfig.editorconfig
+E:\VS22\Repos\ModeladoTarea\ModeladoTarea\Shared\obj\Debug\net7.0\ModeladoTarea.Shared.AssemblyInfoInputs.cache
+E:\VS22\Repos\ModeladoTarea\ModeladoTarea\Shared\obj\Debug\net7.0\ModeladoTarea.Shared.AssemblyInfo.cs
+E:\VS22\Repos\ModeladoTarea\ModeladoTarea\Shared\obj\Debug\net7.0\ModeladoTarea.Shared.csproj.CoreCompileInputs.cache
+E:\VS22\Repos\ModeladoTarea\ModeladoTarea\Shared\obj\Debug\net7.0\ModeladoTarea.Shared.dll
+E:\VS22\Repos\ModeladoTarea\ModeladoTarea\Shared\obj\Debug\net7.0\refint\ModeladoTarea.Shared.dll
+E:\VS22\Repos\ModeladoTarea\ModeladoTarea\Shared\obj\Debug\net7.0\ModeladoTarea.Shared.pdb
+E:\VS22\Repos\ModeladoTarea\ModeladoTarea\Shared\obj\Debug\net7.0\ref\ModeladoTarea.Shared.dll
+E:\VS22\ModeladoTarea version 2\ModeladoTarea\Shared\bin\Debug\net7.0\ModeladoTarea.Shared.deps.json
+E:\VS22\ModeladoTarea version 2\ModeladoTarea\Shared\bin\Debug\net7.0\ModeladoTarea.Shared.dll
+E:\VS22\ModeladoTarea version 2\ModeladoTarea\Shared\bin\Debug\net7.0\ModeladoTarea.Shared.pdb
+E:\VS22\ModeladoTarea version 2\ModeladoTarea\Shared\obj\Debug\net7.0\ModeladoTarea.Shared.csproj.AssemblyReference.cache
+E:\VS22\ModeladoTarea version 2\ModeladoTarea\Shared\obj\Debug\net7.0\ModeladoTarea.Shared.GeneratedMSBuildEditorConfig.editorconfig
+E:\VS22\ModeladoTarea version 2\ModeladoTarea\Shared\obj\Debug\net7.0\ModeladoTarea.Shared.AssemblyInfoInputs.cache
+E:\VS22\ModeladoTarea version 2\ModeladoTarea\Shared\obj\Debug\net7.0\ModeladoTarea.Shared.AssemblyInfo.cs
+E:\VS22\ModeladoTarea version 2\ModeladoTarea\Shared\obj\Debug\net7.0\ModeladoTarea.Shared.csproj.CoreCompileInputs.cache
+E:\VS22\ModeladoTarea version 2\ModeladoTarea\Shared\obj\Debug\net7.0\ModeladoTarea.Shared.dll
+E:\VS22\ModeladoTarea version 2\ModeladoTarea\Shared\obj\Debug\net7.0\refint\ModeladoTarea.Shared.dll
+E:\VS22\ModeladoTarea version 2\ModeladoTarea\Shared\obj\Debug\net7.0\ModeladoTarea.Shared.pdb
+E:\VS22\ModeladoTarea version 2\ModeladoTarea\Shared\obj\Debug\net7.0\ref\ModeladoTarea.Shared.dll
+E:\VS22\ModeladoTareaAgregar\ModeladoTarea\Shared\bin\Debug\net7.0\ModeladoTarea.Shared.deps.json
+E:\VS22\ModeladoTareaAgregar\ModeladoTarea\Shared\bin\Debug\net7.0\ModeladoTarea.Shared.dll
+E:\VS22\ModeladoTareaAgregar\ModeladoTarea\Shared\bin\Debug\net7.0\ModeladoTarea.Shared.pdb
+E:\VS22\ModeladoTareaAgregar\ModeladoTarea\Shared\obj\Debug\net7.0\ModeladoTarea.Shared.csproj.AssemblyReference.cache
+E:\VS22\ModeladoTareaAgregar\ModeladoTarea\Shared\obj\Debug\net7.0\ModeladoTarea.Shared.GeneratedMSBuildEditorConfig.editorconfig
+E:\VS22\ModeladoTareaAgregar\ModeladoTarea\Shared\obj\Debug\net7.0\ModeladoTarea.Shared.AssemblyInfoInputs.cache
+E:\VS22\ModeladoTareaAgregar\ModeladoTarea\Shared\obj\Debug\net7.0\ModeladoTarea.Shared.AssemblyInfo.cs
+E:\VS22\ModeladoTareaAgregar\ModeladoTarea\Shared\obj\Debug\net7.0\ModeladoTarea.Shared.csproj.CoreCompileInputs.cache
+E:\VS22\ModeladoTareaAgregar\ModeladoTarea\Shared\obj\Debug\net7.0\ModeladoTarea.Shared.dll
+E:\VS22\ModeladoTareaAgregar\ModeladoTarea\Shared\obj\Debug\net7.0\refint\ModeladoTarea.Shared.dll
+E:\VS22\ModeladoTareaAgregar\ModeladoTarea\Shared\obj\Debug\net7.0\ModeladoTarea.Shared.pdb
+E:\VS22\ModeladoTareaAgregar\ModeladoTarea\Shared\obj\Debug\net7.0\ref\ModeladoTarea.Shared.dll

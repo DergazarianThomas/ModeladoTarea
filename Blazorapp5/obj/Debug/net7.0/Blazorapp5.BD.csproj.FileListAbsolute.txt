@@ -1,0 +1,42 @@
+E:\VS22\Repos\ModeladoTarea\Blazorapp5\bin\Debug\net7.0\Blazorapp5.BD.deps.json
+E:\VS22\Repos\ModeladoTarea\Blazorapp5\bin\Debug\net7.0\Blazorapp5.BD.runtimeconfig.json
+E:\VS22\Repos\ModeladoTarea\Blazorapp5\bin\Debug\net7.0\Blazorapp5.BD.dll
+E:\VS22\Repos\ModeladoTarea\Blazorapp5\bin\Debug\net7.0\Blazorapp5.BD.pdb
+E:\VS22\Repos\ModeladoTarea\Blazorapp5\obj\Debug\net7.0\Blazorapp5.BD.csproj.AssemblyReference.cache
+E:\VS22\Repos\ModeladoTarea\Blazorapp5\obj\Debug\net7.0\Blazorapp5.BD.GeneratedMSBuildEditorConfig.editorconfig
+E:\VS22\Repos\ModeladoTarea\Blazorapp5\obj\Debug\net7.0\Blazorapp5.BD.AssemblyInfoInputs.cache
+E:\VS22\Repos\ModeladoTarea\Blazorapp5\obj\Debug\net7.0\Blazorapp5.BD.AssemblyInfo.cs
+E:\VS22\Repos\ModeladoTarea\Blazorapp5\obj\Debug\net7.0\Blazorapp5.BD.csproj.CoreCompileInputs.cache
+E:\VS22\Repos\ModeladoTarea\Blazorapp5\obj\Debug\net7.0\Blazorapp5.BD.dll
+E:\VS22\Repos\ModeladoTarea\Blazorapp5\obj\Debug\net7.0\refint\Blazorapp5.BD.dll
+E:\VS22\Repos\ModeladoTarea\Blazorapp5\obj\Debug\net7.0\Blazorapp5.BD.pdb
+E:\VS22\Repos\ModeladoTarea\Blazorapp5\obj\Debug\net7.0\Blazorapp5.BD.genruntimeconfig.cache
+E:\VS22\Repos\ModeladoTarea\Blazorapp5\obj\Debug\net7.0\ref\Blazorapp5.BD.dll
+E:\VS22\ModeladoTarea version 2\Blazorapp5\bin\Debug\net7.0\Blazorapp5.BD.deps.json
+E:\VS22\ModeladoTarea version 2\Blazorapp5\bin\Debug\net7.0\Blazorapp5.BD.runtimeconfig.json
+E:\VS22\ModeladoTarea version 2\Blazorapp5\bin\Debug\net7.0\Blazorapp5.BD.dll
+E:\VS22\ModeladoTarea version 2\Blazorapp5\bin\Debug\net7.0\Blazorapp5.BD.pdb
+E:\VS22\ModeladoTarea version 2\Blazorapp5\obj\Debug\net7.0\Blazorapp5.BD.csproj.AssemblyReference.cache
+E:\VS22\ModeladoTarea version 2\Blazorapp5\obj\Debug\net7.0\Blazorapp5.BD.GeneratedMSBuildEditorConfig.editorconfig
+E:\VS22\ModeladoTarea version 2\Blazorapp5\obj\Debug\net7.0\Blazorapp5.BD.AssemblyInfoInputs.cache
+E:\VS22\ModeladoTarea version 2\Blazorapp5\obj\Debug\net7.0\Blazorapp5.BD.AssemblyInfo.cs
+E:\VS22\ModeladoTarea version 2\Blazorapp5\obj\Debug\net7.0\Blazorapp5.BD.csproj.CoreCompileInputs.cache
+E:\VS22\ModeladoTarea version 2\Blazorapp5\obj\Debug\net7.0\Blazorapp5.BD.dll
+E:\VS22\ModeladoTarea version 2\Blazorapp5\obj\Debug\net7.0\refint\Blazorapp5.BD.dll
+E:\VS22\ModeladoTarea version 2\Blazorapp5\obj\Debug\net7.0\Blazorapp5.BD.pdb
+E:\VS22\ModeladoTarea version 2\Blazorapp5\obj\Debug\net7.0\Blazorapp5.BD.genruntimeconfig.cache
+E:\VS22\ModeladoTarea version 2\Blazorapp5\obj\Debug\net7.0\ref\Blazorapp5.BD.dll
+E:\VS22\ModeladoTareaAgregar\Blazorapp5\bin\Debug\net7.0\Blazorapp5.BD.deps.json
+E:\VS22\ModeladoTareaAgregar\Blazorapp5\bin\Debug\net7.0\Blazorapp5.BD.runtimeconfig.json
+E:\VS22\ModeladoTareaAgregar\Blazorapp5\bin\Debug\net7.0\Blazorapp5.BD.dll
+E:\VS22\ModeladoTareaAgregar\Blazorapp5\bin\Debug\net7.0\Blazorapp5.BD.pdb
+E:\VS22\ModeladoTareaAgregar\Blazorapp5\obj\Debug\net7.0\Blazorapp5.BD.csproj.AssemblyReference.cache
+E:\VS22\ModeladoTareaAgregar\Blazorapp5\obj\Debug\net7.0\Blazorapp5.BD.GeneratedMSBuildEditorConfig.editorconfig
+E:\VS22\ModeladoTareaAgregar\Blazorapp5\obj\Debug\net7.0\Blazorapp5.BD.AssemblyInfoInputs.cache
+E:\VS22\ModeladoTareaAgregar\Blazorapp5\obj\Debug\net7.0\Blazorapp5.BD.AssemblyInfo.cs
+E:\VS22\ModeladoTareaAgregar\Blazorapp5\obj\Debug\net7.0\Blazorapp5.BD.csproj.CoreCompileInputs.cache
+E:\VS22\ModeladoTareaAgregar\Blazorapp5\obj\Debug\net7.0\Blazorapp5.BD.dll
+E:\VS22\ModeladoTareaAgregar\Blazorapp5\obj\Debug\net7.0\refint\Blazorapp5.BD.dll
+E:\VS22\ModeladoTareaAgregar\Blazorapp5\obj\Debug\net7.0\Blazorapp5.BD.pdb
+E:\VS22\ModeladoTareaAgregar\Blazorapp5\obj\Debug\net7.0\Blazorapp5.BD.genruntimeconfig.cache
+E:\VS22\ModeladoTareaAgregar\Blazorapp5\obj\Debug\net7.0\ref\Blazorapp5.BD.dll
