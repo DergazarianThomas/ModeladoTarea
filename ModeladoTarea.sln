@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModeladoTarea.Server", "ModeladoTarea\Server\ModeladoTarea.Server.csproj", "{883B6126-E9CF-467A-AEBB-100CB8FB4E47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModeladoTarea.Server", "ModeladoTarea\Server\ModeladoTarea.Server.csproj", "{883B6126-E9CF-467A-AEBB-100CB8FB4E47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModeladoTarea.Client", "ModeladoTarea\Client\ModeladoTarea.Client.csproj", "{D5FB14B7-25C5-4D50-8FEA-160A11FBAE0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModeladoTarea.Client", "ModeladoTarea\Client\ModeladoTarea.Client.csproj", "{D5FB14B7-25C5-4D50-8FEA-160A11FBAE0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModeladoTarea.Shared", "ModeladoTarea\Shared\ModeladoTarea.Shared.csproj", "{CB70745A-5E43-4879-B2BC-58CE9B84AF71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModeladoTarea.Shared", "ModeladoTarea\Shared\ModeladoTarea.Shared.csproj", "{CB70745A-5E43-4879-B2BC-58CE9B84AF71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazorapp5.BD", "Blazorapp5\Blazorapp5.BD.csproj", "{DBDB97B7-91AA-4B89-9318-C66B6444FB64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazorapp5.BD", "Blazorapp5\Blazorapp5.BD.csproj", "{DBDB97B7-91AA-4B89-9318-C66B6444FB64}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

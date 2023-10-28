@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Blazorapp5.BD.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20231025225907_inicio")]
+    [Migration("20231028074107_inicio")]
     partial class inicio
     {
         /// <inheritdoc />
