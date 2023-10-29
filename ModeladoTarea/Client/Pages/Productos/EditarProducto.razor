@@ -1,0 +1,78 @@
+﻿@page "/Productos/editar/{id:int}"
+
+@inject NavigationManager navigationManager
+@inject IHttpServicio http
+
+<body>
+    <h3>AgregarProducto</h3>
+
+    <FormProductos producto="producto" onValidSubmit="grabar" onCancel="cancelar">
+
+
+    </FormProductos>
+
+
+
+
+
+
+
+</body>
+
+@code {
+    private Producto producto = new();
+    [Parameter] public int productoId { get; set; }
+    string mensaje = "";
+
+    public EditarProducto()
+    {
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        base.OnInitializedAsync();
+        await Mostrar();
+    }
+
+    private async Task Mostrar()
+    {
+        var respuesta = await http.Get<Producto>($"api/Producto/{productoId}");
+
+        if (!respuesta.Error)
+        {
+            producto = respuesta.Respuesta;
+        }
+        else
+        {
+            mensaje = await respuesta.ObtenerError();
+        }
+    }
+
+    private async void grabar()
+    {
+        ProductoDTO productoDTO = new()
+            {
+                codigo = producto.codigo,
+                nombre = producto.nombre,
+                descripcion = producto.descripcion,
+                precio = producto.precio,
+                cantidad = producto.cantidad,
+                categoriaId = producto.categoriaId
+            };
+        var httpRespuesta = await http.Put<ProductoDTO>("api/Producto", productoDTO);
+
+
+        if (httpRespuesta.Error)
+        {
+            var body = httpRespuesta.HttpResponseMessage;
+        }
+
+        navigationManager.NavigateTo("/Productos");
+    }
+
+    private async void cancelar()
+    {
+        navigationManager.NavigateTo("/Productos");
+    }
+
+}

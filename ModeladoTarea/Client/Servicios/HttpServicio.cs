@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Text;
+using System.Text.Json;
 
 namespace ModeladoTarea.Client.Servicios
 {
@@ -26,6 +27,17 @@ namespace ModeladoTarea.Client.Servicios
                 return new HttpRespuesta<T>(default, true, response);
             }
         }
+
+        public async Task <HttpRespuesta<object>> Post<T>(string url, T enviar)
+        {
+            var enviarJson = JsonSerializer.Serialize(enviar);
+            var enviarContent = new StringContent(enviarJson, Encoding.UTF8, "application/json");
+
+            var respuesta = await http.PostAsync(url, enviarContent);
+            return new HttpRespuesta<object>(null, respuesta.IsSuccessStatusCode, respuesta);
+        }
+
+
 
         private async Task<T?> DesSerializar<T>(HttpResponseMessage response)
         {

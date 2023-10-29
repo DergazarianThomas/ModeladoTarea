@@ -1,8 +1,6 @@
 ﻿<body>
 
-
-
-    <EditForm Model="producto" OnInvalidSubmit="onValidSubmit">
+    <EditForm Model="producto" OnValidSubmit="onValidSubmit">
 
         <div class="form-group">
             <label>Codigo</label>
@@ -16,8 +14,8 @@
         <div class="form-group">
             <label>Nombre</label>
             <div>
-                <InputText class="form-control" @bind-Value="@producto.Nombre"></InputText>
-                <ValidationMessage For="@(() => producto.Nombre)" />
+                <InputText class="form-control" @bind-Value="@producto.nombre"></InputText>
+                <ValidationMessage For="@(() => producto.nombre)" />
             </div>
 
         </div>
@@ -25,7 +23,13 @@
         <div class="form-group">
             <label>Categoria</label>
             <div>
-                <InputSelect class="form-control" @bind-Value="@producto.categoriaId"></InputSelect>
+                <InputSelect class="form-control" @bind-Value="@producto.categoriaId">
+                    <option value="0">Select a category</option>
+                    @foreach (var category in categorias)
+                    {
+                        <option value="@category.id">@category.categoria</option>
+                    }
+                </InputSelect>
                 <ValidationMessage For="@(() => producto.categoriaId)" />
             </div>
 
@@ -34,16 +38,16 @@
         <div class="form-group">
             <label>Descripcion</label>
             <div>
-                <InputText class="form-control" @bind-Value="@producto.Descripcion"></InputText>
-                <ValidationMessage For="@(() => producto.Descripcion)" />
+                <InputText class="form-control" @bind-Value="@producto.descripcion"></InputText>
+                <ValidationMessage For="@(() => producto.descripcion)" />
             </div>
 
         </div>
         <div class="form-group">
             <label>Precio</label>
             <div>
-                <InputNumber class="form-control" @bind-Value="@producto.Precio"></InputNumber>
-                <ValidationMessage For="@(() => producto.Precio)" />
+                <InputNumber class="form-control" @bind-Value="@producto.precio"></InputNumber>
+                <ValidationMessage For="@(() => producto.precio)" />
             </div>
 
         </div>
@@ -56,6 +60,7 @@
         </div>
         <br />
         <button class="btn btn-primary" type="submit">Aceptar</button>
+        <button class="btn btn-secondary" @onclick="onCancel">Cancelar</button>
     </EditForm>
 
 </body>
@@ -63,11 +68,23 @@
 
 
 @code {
-    [Parameter] public ProductoDTO producto { get; set; } = new();
+    [Parameter] public Producto producto { get; set; } = new();
 
 
     [Parameter] public EventCallback onValidSubmit { get; set; }
     [Parameter] public EventCallback onCancel { get; set; }
+
+    //temporal
+
+    List<Categoria> categorias = new List<Categoria>
+    {
+        new Categoria { id = 1, categoria = "Category 1" },
+        new Categoria { id = 2, categoria = "Category 2" },
+        new Categoria { id = 3, categoria = "Category 3" }
+    };
+
+
+
 
     //codigo
     //Nombre

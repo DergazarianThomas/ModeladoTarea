@@ -58,9 +58,9 @@ namespace ModeladoTarea.Server.Controllers
                 Producto nuevoproducto = new Producto();
 
                 nuevoproducto.codigo = entidad.codigo;
-                nuevoproducto.nombre = entidad.Nombre;
-                nuevoproducto.descripcion = entidad.Descripcion;
-                nuevoproducto.precio = entidad.Precio;
+                nuevoproducto.nombre = entidad.nombre;
+                nuevoproducto.descripcion = entidad.descripcion;
+                nuevoproducto.precio = entidad.precio;
                 nuevoproducto.cantidad = entidad.cantidad;
                 nuevoproducto.categoriaId = entidad.categoriaId;
 
@@ -90,10 +90,10 @@ namespace ModeladoTarea.Server.Controllers
             Producto entidad = new Producto();
             entidad.id = id;
             entidad.codigo = productoDTO.codigo;
-            entidad.nombre = productoDTO.Nombre;
-            entidad.descripcion = productoDTO.Descripcion;
+            entidad.nombre = productoDTO.nombre;
+            entidad.descripcion = productoDTO.descripcion;
             entidad.cantidad = productoDTO.cantidad;
-            entidad.precio = productoDTO.Precio;
+            entidad.precio = productoDTO.precio;
             entidad.categoriaId = productoDTO.categoriaId;
         
 
