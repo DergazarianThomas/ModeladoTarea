@@ -1,4 +1,4 @@
-﻿@page "/Productos/editar/{id:int}"
+﻿@page "/Productos/editar/{productoId:int}"
 
 @inject NavigationManager navigationManager
 @inject IHttpServicio http
@@ -24,13 +24,9 @@
     [Parameter] public int productoId { get; set; }
     string mensaje = "";
 
-    public EditarProducto()
-    {
-    }
-
     protected override async Task OnInitializedAsync()
     {
-        base.OnInitializedAsync();
+        await base.OnInitializedAsync();
         await Mostrar();
     }
 
@@ -50,16 +46,10 @@
 
     private async void grabar()
     {
-        ProductoDTO productoDTO = new()
-            {
-                codigo = producto.codigo,
-                nombre = producto.nombre,
-                descripcion = producto.descripcion,
-                precio = producto.precio,
-                cantidad = producto.cantidad,
-                categoriaId = producto.categoriaId
-            };
-        var httpRespuesta = await http.Put<ProductoDTO>("api/Producto", productoDTO);
+
+
+
+        var httpRespuesta = await http.Put<Producto>($"api/Producto/{productoId}", producto);
 
 
         if (httpRespuesta.Error)

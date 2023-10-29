@@ -1,0 +1,67 @@
+﻿<head>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+@if (Mostrar)
+{
+    <div class="modal-backdrop show"></div>
+    <div class="modal fade show" id="exampleModal" tabindex="-1"
+         role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true" style="display: block;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header fondoTop">
+                    <h1 class="modal-title txtBlanco" id="exampleModalLabel">@Titulo</h1>
+                    <button @onclick="onCancel" type="button" class="close borde" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body fondoBody">
+                    @ChildContent
+                </div>
+                <div class="modal-footer fondoBody">
+                    @if (verCancelar)
+                    {
+                        <button @onclick="onCancel" type="button" class="btn btn-secondary"
+                                data-dismiss="modal">
+                            @textCancelar
+                        </button>
+                    }
+                    @if (verOk)
+                    {
+                        <button @onclick="onConfirm" type="button" class="btn btn-primary">
+                            @textOk
+                        </button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@code {
+    private bool Mostrar = false;
+    [Parameter] public bool verCancelar { get; set; } = true;
+    [Parameter] public bool verOk { get; set; } = true;
+
+    [Parameter] public string textCancelar { get; set; } = "Cancelar";
+    [Parameter] public string textOk { get; set; } = "Aceptar";
+    [Parameter] public string Titulo { get; set; } = "Confirmar";
+
+    [Parameter] public EventCallback onCancel { get; set; }
+    [Parameter] public EventCallback onConfirm { get; set; }
+
+    [Parameter] public RenderFragment ChildContent { get; set; }
+
+    public void Ver()
+    {
+        Mostrar = true;
+    }
+
+    public void Ocultar()
+    {
+        Mostrar = false;
+    }
+}

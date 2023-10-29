@@ -52,7 +52,14 @@
                         <td>
                             <a class="btn btn-primary" href="/Productos/editar/@item.id">
 
-                                Editar
+                                editar
+
+                            </a>
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" @onclick="()=>Eliminar(item)">
+
+                                Borrar
 
                             </a>
                         </td>
@@ -66,7 +73,20 @@
 
     </table>
 
+    <Confirmar @ref="confirmar"
+                  verCancelar="true"
+                  verOk="true"
+                  textOk="Aceptar"
+                  Titulo="Borrar Pago"
+                  onCancel="Cancelar"
+                  onConfirm="Borrar">
 
+        <div>
+            <p>Está por borrar el pago @ProductoBorrar.nombre</p>
+            <br />
+            <p>¿Está seguro que desea continuar?</p>
+        </div>
+    </Confirmar>
 
 
 
@@ -78,9 +98,11 @@
 
 
 @code {
+    Confirmar confirmar;
     List<Producto>? productos;
     bool error = false;
     string mensaje = "";
+    Producto ProductoBorrar;
 
     protected override async Task OnInitializedAsync()
     {
@@ -90,6 +112,8 @@
 
     private async Task Leer()
     {
+        productos = null;
+
         var respuesta = await http.Get<List<Producto>>("api/Producto");
 
         error = respuesta.Error;
@@ -104,4 +128,27 @@
         }
     }
 
+    private async Task Eliminar(Producto productoBorrar)
+    {
+        ProductoBorrar = productoBorrar;
+        confirmar.Ver();
+    }
+
+    private void Cancelar()
+    {
+        confirmar.Ocultar();
+        ProductoBorrar = null;
+    }
+
+    private async Task Borrar()
+    {
+        var respuesta = await http.Delete($"api/Producto/{ProductoBorrar.id}");
+        if (respuesta.Error)
+        {
+            var body = "Error, no se puede borrar el producto";
+        }
+
+        Cancelar();
+        await Leer();
+    }
 }
