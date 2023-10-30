@@ -39,7 +39,6 @@
 }
 
 .botones {
-    font-family: Roboto Mono;
     width: auto;
     margin-top: 20px;
     margin-left: auto;
@@ -49,6 +48,7 @@
     cursor: pointer;
     padding: 9px 15px;
     font-size: 20px;
+    background-color:black;
 }
 
 .cont-botones {
