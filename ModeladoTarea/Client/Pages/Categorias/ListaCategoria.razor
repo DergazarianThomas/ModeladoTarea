@@ -3,72 +3,131 @@
 
 <PageTitle>Lista de categorias</PageTitle>
 
-        <body>
-            <h3 class="text-center">ListaProductos</h3>
+    <body>
+    <h3 class="text-center header">Lista de Categorias</h3>
 
-            <a class="btn btn-primary" href="/Categorias/Agregar">Crear categoria</a>
+        <a class="btn btn-primary" href="/Categorias/Agregar">Crear categoria</a>
 
-            <table>
-                <tr>
-                    <th> Categoria </th>
+        <table>
+            <tr>
+                <th> Categoria </th>
 
-                </tr>
-                @if(error)
-                {
-                }
-                else
-                {
+            </tr>
+            @if(error)
+            {
+            }
+            else
+            {
                 @if ( categorias == null)
                 {
                 <tr> Cargando....</tr>
                 }
                 else if (categorias.Count == 0)
                 {
-                <tr> No existen datos</tr>
+                    <tr> No existen datos</tr>
+                    }
+                    else
+                    {
+                        @foreach (var item in categorias)
+                        {
+                        <tr>
+                            <td>@item.categoria</td>
+                            <td>
+                                <a class="btn btn-primary" href="/Categorias/Editar/@item.id">
+
+                                    editar
+
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-primary" @onclick="()=>Eliminar(item)">
+
+                                    Borrar
+
+                                </a>
+                            </td>
+                        </tr>
+
+                    }
                 }
-                else
-                {
-                @foreach (var item in categorias)
-                {
-                <tr>
-                    <td>@item.categoria</td>
-                    <td>
-                        <a class="btn btn-primary" href="/Categorias/Editar/@item.id">
+            }
+        </table>
 
-                            editar
+    <div class="insquare">
 
-                        </a>
-                    </td>
-                    <td>
-                        <a class="btn btn-primary" @onclick="()=>Eliminar(item)">
+        <div class="table-responsive rounded-3">
 
-                            Borrar
+            <table class="table table-striped table-hover table-bordered text-center">
 
-                        </a>
-                    </td>
-                </tr>
+                <thead id="table-headers">
 
-                }
-                }
-                }
+                    <tr>
+                        <th class="col-1">Categoria</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @if (error)
+                    {
+
+                    }
+                    else
+                    {
+                        @if (categorias == null)
+                        {
+                            <tr> Cargando....</tr>
+                        }
+                        else if (categorias.Count == 0)
+                        {
+                            <tr> No existen datos</tr>
+                        }
+                        else
+                        {
+                            @foreach (var item in categorias)
+                            {
+                                <tr>
+                                    <td>@item.categoria</td>
+                                    <td>
+                                        <a class="btn btn-primary table-button"
+                                        @onclick="() => OpenModifCateg(item.id)">
+                                            Modificar
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <i class='bx bx-trash trash-button table-button' @onclick="()=>Eliminar(item)"></i>
+
+                                    </td>
+                                </tr>
+
+                            }
+                        }
+                    }
+                </tbody>
+
             </table>
 
-            <Confirmar @ref="confirmar"
-                       verCancelar="true"
-                       verOk="true"
-                       textOk="Aceptar"
-                       Titulo="Borrar Categoria"
-                       onCancel="Cancelar"
-                       onConfirm="Borrar">
 
-                <div>
-                    <p>Está por borrar la categoria @CategoriaBorrar.categoria</p>
-                    <br />
-                    <p>¿Está seguro que desea continuar?</p>
-                </div>
-            </Confirmar>
+        </div>
 
-        </body>
+    </div>
+
+        <Confirmar @ref="confirmar"
+                    verCancelar="true"
+                    verOk="true"
+                    textOk="Aceptar"
+                    Titulo="Borrar Categoria"
+                    onCancel="Cancelar"
+                    onConfirm="Borrar">
+
+            <div>
+                <p>Está por borrar la categoria @CategoriaBorrar.categoria</p>
+                <br />
+                <p>¿Está seguro que desea continuar?</p>
+            </div>
+        </Confirmar>
+
+    </body>
 
 
 

@@ -7,11 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Pages\Categorias\ListaCategoria.razor.css" />
     <None Remove="Pages\Index.razor.css" />
     <None Remove="Pages\Productos\ListaProducto.razor.css" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Pages\Categorias\ListaCategoria.razor.css" />
     <Content Include="Pages\Index.razor.css" />
     <Content Include="Pages\Productos\ListaProducto.razor.css" />
   </ItemGroup>
