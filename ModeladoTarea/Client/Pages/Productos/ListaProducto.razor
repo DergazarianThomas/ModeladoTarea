@@ -5,92 +5,124 @@
 
 <HeadContent>
 
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
 
 </HeadContent>
 
 
 <body>
-    <h3 class="text-center">ListaProductos</h3>
+    <h3 class="text-center header">Lista de Productos</h3>
 
-    <a class="btn btn-primary" href="/productos/agregar">Crear producto</a>
+    <div class="insquare">
 
+        <div class="table-responsive rounded-3">
 
-    <table>
-        <tr>
-            <th> Codigo </th>
-            <th> Nombre</th>
-            <th> Categoria</th>
-            <th> Descripcion</th>
-            <th> Precio</th>
-            <th> Cantidad</th>
-        </tr>
-        @if(error)
-        {
-            
-        }
-        else
-        {
-            @if (productos == null)
-            {
-                <tr> Cargando....</tr>
-            }
-            else if (productos.Count == 0)
-            {
-                <tr> No existen datos</tr>
-            }
-            else
-            {
-                @foreach (var item in productos)
-                {
+            <table class="table table-striped table-hover table-bordered text-center">
+
+                <thead id="table-headers">
+
                     <tr>
-                        <td>@item.codigo</td>
-                        <td>@item.nombre</td>
-                        <td>@item.categoriaId</td>
-                        <td>@item.descripcion</td>
-                        <td>@item.precio</td>
-                        <td>@item.cantidad</td>
-                        <td>
-                            <a class="btn btn-primary" href="/Productos/editar/@item.id">
-
-                                editar
-
-                            </a>
-                        </td>
-                        <td>
-                            <a class="btn btn-primary" @onclick="()=>Eliminar(item)">
-
-                                Borrar
-
-                            </a>
-                        </td>
+                        <th class="col-1">Codigo</th>
+                        <th class="col-1">Nombre</th>
+                        <th class="col-1">Categoria</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th></th>
+                        <th></th>
                     </tr>
+                </thead>
 
-                }
-            }
-        }
-        
+                <tbody>
+
+                    @if (error)
+                    {
+
+                    }
+                    else
+                    {
+                        @if (productos == null)
+                        {
+                            <tr> Cargando....</tr>
+                        }
+                        else if (productos.Count == 0)
+                        {
+                            <tr> No existen datos</tr>
+                        }
+                        else
+                        {
+                            @foreach (var item in productos)
+                            {
+                                <tr>
+                                    <td>@item.codigo</td>
+                                    <td>@item.nombre</td>
+                                    <td>@item.categoriaId</td>
+                                    <td>@item.precio</td>
+                                    <td>@item.cantidad</td>
+                                    <td>
+                                        <a class="btn btn-primary table-button"
+                                        @onclick="() => OpenModifProd(item.id)">
+                                            Modificar
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <i class='bx bx-trash trash-button table-button' @onclick="()=>Eliminar(item)"></i>
+
+                                    </td>
+                                </tr>
+
+                            }
+                        }
+                    }
+                </tbody>
+
+            </table>
 
 
-    </table>
+        </div>
+
+    </div>
+
+    <div class="d-flex">
+
+        <button type="button" class="btn btn-info botones"
+        @onclick="() => OpenAgregarProd()">
+            Nuevo
+        </button>
+    </div>
+
 
     <Confirmar @ref="confirmar"
                   verCancelar="true"
                   verOk="true"
                   textOk="Aceptar"
-                  Titulo="Borrar Pago"
+                  Titulo="Borrar Categoria"
                   onCancel="Cancelar"
                   onConfirm="Borrar">
 
         <div>
-            <p>Está por borrar el pago @ProductoBorrar.nombre</p>
+            <p>Está por borrar el producto @ProductoBorrar.nombre</p>
             <br />
             <p>¿Está seguro que desea continuar?</p>
         </div>
     </Confirmar>
 
+    @if (AgregarProdOpen)
+    {
+        <ModalAgregarProd
 
+            OnClose="@OnAgregarProdClose">
 
+        </ModalAgregarProd>
+    }
 
+    @if (ModificarProdOpen)
+    {
+        <ModalModifProd OnClose="@OnModifProdClose"
+            productoId="selectedItemToEditId">
+
+        </ModalModifProd>
+    }
 
 
 </body>
@@ -149,6 +181,40 @@
         }
 
         Cancelar();
+        await Leer();
+    }
+
+    public bool AgregarProdOpen { get; set; }
+
+    public bool ModificarProdOpen { get; set; }
+
+    private void OpenAgregarProd()
+    {
+        AgregarProdOpen = true;
+        StateHasChanged();
+
+    }
+
+    private async Task OnAgregarProdClose(bool accepted)
+    {
+        ModificarProdOpen = false;
+        StateHasChanged();
+        await Leer();
+    }
+
+    int selectedItemToEditId = -1;
+
+    private void OpenModifProd(int itemId)
+    {
+        selectedItemToEditId = itemId;
+        ModificarProdOpen = true;
+        StateHasChanged();
+    }
+
+    private async Task OnModifProdClose(bool accepted)
+    {
+        ModificarProdOpen = false;
+        StateHasChanged();
         await Leer();
     }
 }

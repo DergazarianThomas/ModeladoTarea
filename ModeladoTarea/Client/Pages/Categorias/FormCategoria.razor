@@ -1,0 +1,28 @@
+﻿<body>
+
+    <EditForm Model="categoria" OnValidSubmit="onValidSubmit">
+
+        <div class="form-group">
+            <label>Nombre de categoria</label>
+            <div>
+                <InputText class="form-control" @bind-Value="@categoria.categoria"></InputText>
+                <ValidationMessage For="@(() => categoria.categoria)" />
+            </div>
+
+        </div>
+        <br />
+        <button class="btn btn-primary" type="submit">Aceptar</button>
+        <button class="btn btn-secondary" @onclick="onCancel">Cancelar</button>
+    </EditForm>
+
+</body>
+
+
+
+@code {
+    [Parameter] public Categoria categoria { get; set; } = new();
+
+
+    [Parameter] public EventCallback onValidSubmit { get; set; }
+    [Parameter] public EventCallback onCancel { get; set; }
+}

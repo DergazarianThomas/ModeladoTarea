@@ -1,0 +1,84 @@
+﻿@inject IHttpServicio http
+
+<div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:block; background-color: rgba(10,10,10,.8);">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modificar Producto</h5>
+                <button type="button" class="close;" style=" border-width:0px; background-color: #00000000;" data-dismiss="modal" aria-label="Close" @onclick="@ModalCancel">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <FormProductos producto="producto" onValidSubmit="grabar" onCancel="@ModalCancel" />
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private Producto producto = new();
+    [Parameter] public int productoId { get; set; }
+    bool error = false;
+    string mensaje = "";
+
+    [Parameter] public int ProductoId { get; set; }
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public string Text { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        await Mostrar();
+
+    }
+
+    private async Task Mostrar()
+    {
+        var respuesta = await http.Get<Producto>($"api/Producto/{productoId}");
+
+        if (!respuesta.Error)
+        {
+            producto = respuesta.Respuesta;
+        }
+        else
+        {
+            mensaje = await respuesta.ObtenerError();
+        }
+    }
+
+
+    private async void grabar()
+    {
+        var httpRespuesta = await http.Put<Producto>($"api/Producto/{productoId}", producto);
+
+        if (httpRespuesta.Error)
+        {
+            var body = httpRespuesta.HttpResponseMessage;
+        }
+
+        await OnClose.InvokeAsync(true);
+    }
+
+}

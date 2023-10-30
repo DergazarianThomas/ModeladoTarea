@@ -1,39 +1,36 @@
-﻿@page "/Productos/editar/{productoId:int}"
+﻿@page "/Categorias/Editar/{categoriaId:int}"
 
 @inject NavigationManager navigationManager
 @inject IHttpServicio http
 
 <body>
-    <h3>Editar Producto</h3>
+    <h3>Editar Categoria</h3>
 
-    <FormProductos producto="producto" onValidSubmit="grabar" onCancel="cancelar">
+    <FormCategoria categoria="categoria" onValidSubmit="grabar" onCancel="cancelar">
 
 
-    </FormProductos>
+    </FormCategoria>
 
 </body>
 
 @code {
-    private Producto producto = new();
-    [Parameter] public int productoId { get; set; }
-    bool error = false;
+    private Categoria categoria = new();
+    [Parameter] public int categoriaId { get; set; }
     string mensaje = "";
-
 
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
         await Mostrar();
-
     }
 
     private async Task Mostrar()
     {
-        var respuesta = await http.Get<Producto>($"api/Producto/{productoId}");
+        var respuesta = await http.Get<Categoria>($"api/Categoria/{categoriaId}");
 
         if (!respuesta.Error)
         {
-            producto = respuesta.Respuesta;
+            categoria = respuesta.Respuesta;
         }
         else
         {
@@ -41,13 +38,10 @@
         }
     }
 
-
     private async void grabar()
     {
 
-
-
-        var httpRespuesta = await http.Put<Producto>($"api/Producto/{productoId}", producto);
+        var httpRespuesta = await http.Put<Categoria>($"api/Categoria/{categoriaId}", categoria);
 
 
         if (httpRespuesta.Error)
@@ -55,12 +49,12 @@
             var body = httpRespuesta.HttpResponseMessage;
         }
 
-        navigationManager.NavigateTo("/Productos");
+        navigationManager.NavigateTo("/Categorias");
     }
 
     private async void cancelar()
     {
-        navigationManager.NavigateTo("/Productos");
+        navigationManager.NavigateTo("/Categorias");
     }
 
 }

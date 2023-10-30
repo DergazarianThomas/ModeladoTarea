@@ -1,4 +1,6 @@
-﻿<body>
+﻿@inject IHttpServicio http
+
+<body>
 
     <EditForm Model="producto" OnValidSubmit="onValidSubmit">
 
@@ -19,6 +21,21 @@
             </div>
 
         </div>
+
+@*        <div class="form-group">
+            <label>Categoria</label>
+            <div>
+                <InputSelect class="form-control" @bind-Value="@producto.categoriaId">
+                    <option value="0">Select a category</option>
+                    @foreach (var category in categorias)
+                    {
+                        <option value="@category.id">@category.categoria</option>
+                    }
+                </InputSelect>
+                <ValidationMessage For="@(() => producto.categoriaId)" />
+            </div>
+
+        </div>*@
 
         <div class="form-group">
             <label>Categoria</label>
@@ -74,14 +91,44 @@
     [Parameter] public EventCallback onValidSubmit { get; set; }
     [Parameter] public EventCallback onCancel { get; set; }
 
+    public List<Categoria>? categorias { get; set; }
+
+    bool error = false;
+    string mensaje = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        await Leer();
+    }
+
+    private async Task Leer()
+    {
+        categorias = null;
+
+        var respuesta = await http.Get<List<Categoria>>("api/Categoria");
+
+        error = respuesta.Error;
+
+        if (!respuesta.Error)
+        {
+            categorias = respuesta.Respuesta;
+        }
+        else
+        {
+            mensaje = await respuesta.ObtenerError();
+        }
+
+    }
+
     //temporal
 
-    List<Categoria> categorias = new List<Categoria>
-    {
-        new Categoria { id = 1, categoria = "Category 1" },
-        new Categoria { id = 2, categoria = "Category 2" },
-        new Categoria { id = 3, categoria = "Category 3" }
-    };
+    //List<Categoria> categorias = new List<Categoria>
+    //{
+    //    new Categoria { id = 1, categoria = "Category 1" },
+    //    new Categoria { id = 2, categoria = "Category 2" },
+    //    new Categoria { id = 3, categoria = "Category 3" }
+    //};
 
 
 

@@ -1,0 +1,67 @@
+﻿@using ModeladoTarea.Client.Pages.Productos
+@inject IHttpServicio http
+@inject NavigationManager navigationManager
+
+<div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:block; background-color: rgba(10,10,10,.8);">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" style="color:white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Producto</h5>
+                <button type="button" class="close;" style=" border-width:0px; background-color: #00000000;" data-dismiss="modal" aria-label="Close" @onclick="@ModalCancel">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+
+                <FormProductos producto="producto" onValidSubmit="grabar" onCancel="@ModalCancel"/>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@code {
+
+
+    Producto producto = new();
+
+    private async void grabar()
+    {
+        ProductoDTO productoDTO = new()
+        {
+            codigo = producto.codigo,
+            nombre = producto.nombre,
+            descripcion = producto.descripcion,
+            precio = producto.precio,
+            cantidad = producto.cantidad,
+            categoriaId = producto.categoriaId
+        };
+        var httpRespuesta = await http.Post<ProductoDTO>("api/Producto", productoDTO);
+
+
+        if (httpRespuesta.Error)
+        {
+            var body = httpRespuesta.HttpResponseMessage;
+        }
+
+        await OnClose.InvokeAsync(true);
+    }
+
+
+
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+
+}

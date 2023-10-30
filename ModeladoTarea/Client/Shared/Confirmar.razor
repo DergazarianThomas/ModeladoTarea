@@ -4,27 +4,26 @@
 
 @if (Mostrar)
 {
-    <div class="modal-backdrop show"></div>
-    <div class="modal fade show" id="exampleModal" tabindex="-1"
-         role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true" style="display: block;">
-        <div class="modal-dialog" role="document">
+
+    <div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:block; background-color: rgba(10,10,10,.8);">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-header fondoTop">
-                    <h1 class="modal-title txtBlanco" id="exampleModalLabel">@Titulo</h1>
-                    <button @onclick="onCancel" type="button" class="close borde" data-dismiss="modal"
-                            aria-label="Close">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">@Titulo</h5>
+                    <button type="button" class="close;" style=" border-width:0px; background-color: #00000000;" data-dismiss="modal" aria-label="Close" @onclick="@onCancel">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body fondoBody">
+                <div class="modal-body">
+
                     @ChildContent
+
                 </div>
                 <div class="modal-footer fondoBody">
                     @if (verCancelar)
                     {
                         <button @onclick="onCancel" type="button" class="btn btn-secondary"
-                                data-dismiss="modal">
+                        data-dismiss="modal">
                             @textCancelar
                         </button>
                     }
@@ -39,7 +38,6 @@
         </div>
     </div>
 }
-
 
 @code {
     private bool Mostrar = false;
