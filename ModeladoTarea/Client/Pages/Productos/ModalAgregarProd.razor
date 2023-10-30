@@ -45,8 +45,11 @@
         {
             var body = httpRespuesta.HttpResponseMessage;
         }
+        
+        
+         await OnClose.InvokeAsync(true);
+        
 
-        await OnClose.InvokeAsync(true);
     }
 
 
@@ -57,11 +60,6 @@
     private Task ModalCancel()
     {
         return OnClose.InvokeAsync(false);
-    }
-
-    private Task ModalOk()
-    {
-        return OnClose.InvokeAsync(true);
     }
 
 }

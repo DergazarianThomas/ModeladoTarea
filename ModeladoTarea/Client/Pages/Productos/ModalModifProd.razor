@@ -39,12 +39,6 @@
         return OnClose.InvokeAsync(false);
     }
 
-    private Task ModalOk()
-    {
-        return OnClose.InvokeAsync(true);
-    }
-
-
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
