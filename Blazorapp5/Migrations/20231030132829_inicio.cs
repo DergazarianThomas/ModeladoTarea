@@ -30,8 +30,7 @@ namespace Blazorapp5.BD.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     codigo = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    categoria = table.Column<int>(type: "int", maxLength: 20, nullable: false),
-                    nombre = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     descripcion = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
                     precio = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
                     cantidad = table.Column<int>(type: "int", nullable: false),
@@ -52,6 +51,12 @@ namespace Blazorapp5.BD.Migrations
                 name: "IX_Productos_categoriaId",
                 table: "Productos",
                 column: "categoriaId");
+
+            migrationBuilder.CreateIndex(
+                name: "Producto_codigo_UQ",
+                table: "Productos",
+                column: "codigo",
+                unique: true);
         }
 
         /// <inheritdoc />

@@ -13,10 +13,9 @@ namespace Blazorapp5.BD.Data.Entity
         [Key]
         public int id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "La CATEGORIA del PRODUCTO es obligatorio")]
         public string categoria { get; set; }
 
         public List<Producto> Productos { get; set; } = new List<Producto>();
-
     }
 }

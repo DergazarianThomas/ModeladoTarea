@@ -1,4 +1,5 @@
 ﻿body {
+    background-color: whitesmoke;
 }
 
 .header {
@@ -23,6 +24,7 @@
 .trash-button {
     color: #ff0000;
     position: relative;
+    margin-top: 12px;
 }
 
 

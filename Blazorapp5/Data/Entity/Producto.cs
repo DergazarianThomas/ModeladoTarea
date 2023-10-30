@@ -20,12 +20,7 @@ namespace Blazorapp5.BD.Data.Entity
         [MaxLength(20, ErrorMessage = "Solo se aceptan hasta 20 caracteres en el CODIGO")]
         public string codigo { get; set; }
 
-        [Required(ErrorMessage = "El CODIGO del PRODUCTO es Obligatorio")]
-        [MaxLength(20, ErrorMessage = "Solo se aceptan hasta 4 caracteres en el CODIGO")]
-        public int categoria { get; set; }
-
-        [Required(ErrorMessage = "El Nombre es obligatorio")]
-        [MaxLength(255, ErrorMessage = "Solo se aceptan hasta 255 caracteres en el Nombre")]
+        [Required(ErrorMessage = "El NOMBRE del PRODUCTO es obligatorio")]
         public string nombre { get; set; }
 
         [MaxLength(1000, ErrorMessage = "Solo se aceptan hasta 1000 caracteres en la Descripcion")]
@@ -39,6 +34,7 @@ namespace Blazorapp5.BD.Data.Entity
         [Range(1, int.MaxValue, ErrorMessage = "El campo {0} es requerido")]
         public int cantidad { get; set; }
 
+        [Required(ErrorMessage = "La categoría es obligatoria")]
         public int categoriaId { get; set; }
         public Categoria Categorias { get; set; }
     }

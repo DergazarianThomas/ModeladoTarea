@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Blazorapp5.BD.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20231028074107_inicio")]
+    [Migration("20231030132829_inicio")]
     partial class inicio
     {
         /// <inheritdoc />
@@ -52,10 +52,6 @@ namespace Blazorapp5.BD.Migrations
                     b.Property<int>("cantidad")
                         .HasColumnType("int");
 
-                    b.Property<int>("categoria")
-                        .HasMaxLength(20)
-                        .HasColumnType("int");
-
                     b.Property<int>("categoriaId")
                         .HasColumnType("int");
 
@@ -70,8 +66,7 @@ namespace Blazorapp5.BD.Migrations
 
                     b.Property<string>("nombre")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("precio")
                         .HasPrecision(18, 2)
@@ -80,6 +75,9 @@ namespace Blazorapp5.BD.Migrations
                     b.HasKey("id");
 
                     b.HasIndex("categoriaId");
+
+                    b.HasIndex(new[] { "codigo" }, "Producto_codigo_UQ")
+                        .IsUnique();
 
                     b.ToTable("Productos");
                 });
