@@ -6,7 +6,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content" style="color:white">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar Producto</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Categoria</h5>
                 <button type="button" class="close;" style=" border-width:0px; background-color: #00000000;" data-dismiss="modal" aria-label="Close" @onclick="@ModalCancel">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -14,7 +14,7 @@
             <div class="modal-body">
 
 
-                <FormProductos producto="producto" onValidSubmit="grabar" onCancel="@ModalCancel" />
+                <FormCategoria categoria="categoria" onValidSubmit="grabar" onCancel="@ModalCancel" />
 
             </div>
 
@@ -25,20 +25,16 @@
 @code {
 
 
-    Producto producto = new();
+   Categoria categoria = new();
 
     private async void grabar()
     {
-        ProductoDTO productoDTO = new()
+        CategoriaDTO categoriaDTO = new()
             {
-                codigo = producto.codigo,
-                nombre = producto.nombre,
-                descripcion = producto.descripcion,
-                precio = producto.precio,
-                cantidad = producto.cantidad,
-                categoriaId = producto.categoriaId
+                categoria = categoria.categoria
+
             };
-        var httpRespuesta = await http.Post<ProductoDTO>("api/Producto", productoDTO);
+        var httpRespuesta = await http.Post<CategoriaDTO>("api/Categoria", categoriaDTO);
 
 
         if (httpRespuesta.Error)

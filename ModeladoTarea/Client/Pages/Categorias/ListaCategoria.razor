@@ -8,51 +8,6 @@
 
         <a class="btn btn-primary" href="/Categorias/Agregar">Crear categoria</a>
 
-        <table>
-            <tr>
-                <th> Categoria </th>
-
-            </tr>
-            @if(error)
-            {
-            }
-            else
-            {
-                @if ( categorias == null)
-                {
-                <tr> Cargando....</tr>
-                }
-                else if (categorias.Count == 0)
-                {
-                    <tr> No existen datos</tr>
-                    }
-                    else
-                    {
-                        @foreach (var item in categorias)
-                        {
-                        <tr>
-                            <td>@item.categoria</td>
-                            <td>
-                                <a class="btn btn-primary" href="/Categorias/Editar/@item.id">
-
-                                    editar
-
-                                </a>
-                            </td>
-                            <td>
-                                <a class="btn btn-primary" @onclick="()=>Eliminar(item)">
-
-                                    Borrar
-
-                                </a>
-                            </td>
-                        </tr>
-
-                    }
-                }
-            }
-        </table>
-
     <div class="insquare">
 
         <div class="table-responsive rounded-3">
@@ -62,7 +17,9 @@
                 <thead id="table-headers">
 
                     <tr>
-                        <th class="col-1">Categoria</th>
+                        <th> Categoria </th>
+                        <th>  </th>
+                        <th>  </th>
                     </tr>
                 </thead>
 
@@ -110,6 +67,17 @@
 
         </div>
 
+
+
+    </div>
+
+
+    <div class="d-flex">
+
+        <button type="button" class="btn btn-info botones"
+        @onclick="() => OpenAgregarCateg()">
+            Nuevo
+        </button>
     </div>
 
         <Confirmar @ref="confirmar"
@@ -127,11 +95,28 @@
             </div>
         </Confirmar>
 
+        @if (AgregarCategOpen)
+    {
+        <ModalAgregarCateg
+
+            OnClose="@OnAgregarCategClose">
+
+        </ModalAgregarCateg>
+    }
+
+    @if (ModificarCategOpen)
+    {
+        <ModalModifCateg OnClose="@OnModifCategClose"
+            productoId="selectedItemToEditId">
+
+        </ModalModifCateg>
+    }
+
     </body>
 
 
 
-    @code {
+@code {
     Confirmar confirmar;
     List<Categoria>? categorias;
     bool error = false;
@@ -185,5 +170,37 @@
         Cancelar();
         await Leer();
     }
-        
+    public bool AgregarCategOpen { get; set; }
+
+    public bool ModificarCategOpen { get; set; }
+
+    private void OpenAgregarCateg()
+    {
+        AgregarCategOpen = true;
+        StateHasChanged();
+
     }
+
+    private async Task OnAgregarCategClose(bool accepted)
+    {
+        ModificarCategOpen = false;
+        StateHasChanged();
+        await Leer();
+    }
+
+    int selectedItemToEditId = -1;
+
+    private void OpenModifCateg(int itemId)
+    {
+        selectedItemToEditId = itemId;
+        ModificarCategOpen = true;
+        StateHasChanged();
+    }
+
+    private async Task OnModifCategClose(bool accepted)
+    {
+        ModificarCategOpen = false;
+        StateHasChanged();
+        await Leer();
+    }
+ }

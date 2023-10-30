@@ -4,14 +4,14 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modificar Producto</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Modificar Categoria</h5>
                 <button type="button" class="close;" style=" border-width:0px; background-color: #00000000;" data-dismiss="modal" aria-label="Close" @onclick="@ModalCancel">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
 
-                <FormProductos producto="producto" onValidSubmit="grabar" onCancel="@ModalCancel" />
+                <FormCategoria categoria="categoria" onValidSubmit="grabar" onCancel="@ModalCancel" />
 
             </div>
         </div>
@@ -19,8 +19,8 @@
 </div>
 
 @code {
-    private Producto producto = new();
-    [Parameter] public int productoId { get; set; }
+    private Categoria categoria = new();
+    [Parameter] public int categoriaId { get; set; }
     bool error = false;
     string mensaje = "";
 
@@ -54,11 +54,11 @@
 
     private async Task Mostrar()
     {
-        var respuesta = await http.Get<Producto>($"api/Producto/{productoId}");
+        var respuesta = await http.Get<Categoria>($"api/Categoria/{categoriaId}");
 
         if (!respuesta.Error)
         {
-            producto = respuesta.Respuesta;
+            categoria = respuesta.Respuesta;
         }
         else
         {
@@ -69,7 +69,7 @@
 
     private async void grabar()
     {
-        var httpRespuesta = await http.Put<Producto>($"api/Producto/{productoId}", producto);
+        var httpRespuesta = await http.Put<Categoria>($"api/Categoria/{categoriaId}", categoria);
 
         if (httpRespuesta.Error)
         {
